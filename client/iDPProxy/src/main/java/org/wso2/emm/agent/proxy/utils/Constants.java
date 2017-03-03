@@ -96,7 +96,7 @@ public class Constants {
 	public static final String ACCESS_FAILURE = "400";
 	public static final String REQUEST_SUCCESSFUL = "200";
 	public static final int HTTP = 8280;
-	public static final int HTTPS = 443;
+	public static final int HTTPS = 8243;
 	public static final String BKS = "BKS";
 
 
