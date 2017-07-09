@@ -587,6 +587,11 @@ public class OperationManagerCOSU extends OperationManager {
         }
     }
 
+    @Override
+    public void displayNotification(Operation operation) throws AndroidAgentException {
+
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void handleOwnersRestriction(Operation operation) throws AndroidAgentException {

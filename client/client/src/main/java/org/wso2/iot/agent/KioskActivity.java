@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.wso2.iot.agent.adapters.AppDrawerAdapter;
 import org.wso2.iot.agent.api.ApplicationManager;
@@ -165,6 +166,7 @@ public class KioskActivity extends Activity {
 
     private void installKioskApp() {
         String appUrl = Preference.getString(getApplicationContext(), Constants.KIOSK_APP_DOWNLOAD_URL);
+        Toast.makeText(context,"Installing Kiosk App", Toast.LENGTH_SHORT).show();
         if (appUrl != null) {
             Preference.removePreference(getApplicationContext(), Constants.KIOSK_APP_DOWNLOAD_URL);
             ApplicationManager applicationManager = new ApplicationManager(context.getApplicationContext());
