@@ -200,10 +200,18 @@ public interface VersionBasedOperations {
     void setScreenCaptureDisabled(Operation operation) throws AndroidAgentException;
 
     /**
-     * Configuree AutoTime requirement.
+     * Configure AutoTime requirement.
      *
      * @param operation - Operation object.
      */
     void setAutoTimeRequired(Operation operation) throws AndroidAgentException;
+
+    /**
+     * Configure application restriction to a given app identifier
+     *
+     * @param operation operation object.
+     * @throws AndroidAgentException
+     */
+    void setApplicationRestriction(Operation operation) throws AndroidAgentException;
 
 }

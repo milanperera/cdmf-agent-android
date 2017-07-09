@@ -24,6 +24,7 @@ import android.app.admin.SystemUpdatePolicy;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
@@ -701,6 +702,56 @@ public class OperationManagerCOSU extends OperationManager {
         else {
             getDevicePolicyManager().setAutoTimeRequired(getCdmDeviceAdmin(), false);
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void setApplicationRestriction(Operation operation) throws AndroidAgentException {
+        String appIdentifier = null;
+        String appRestrictionPayload = null;
+        Bundle appConfiguration = new Bundle();
+        JSONObject result = new JSONObject();
+
+        try {
+            JSONObject appRestrictionData = new JSONObject(operation.getPayLoad().toString());
+            if (!appRestrictionData.isNull(Constants.AppRestriction.APP_IDENTIFIER)) {
+                appIdentifier = (String) appRestrictionData.
+                        get(Constants.AppRestriction.APP_IDENTIFIER);
+            }
+            if (!appRestrictionData.isNull(Constants.AppRestriction.RESTRICTION_PAYLOAD)) {
+                appRestrictionPayload = (String) appRestrictionData.
+                        get(Constants.AppRestriction.RESTRICTION_PAYLOAD);
+            }
+            if (appIdentifier != null && !appIdentifier.isEmpty() && appRestrictionPayload != null
+                    && !appRestrictionPayload.isEmpty()) {
+                JSONObject appRestrictions = new JSONObject(appRestrictionPayload);
+                for (int i = 0; i < appRestrictions.length(); i++) {
+                    String key = appRestrictions.keys().next();
+                    Log.d("Info", "Key: " + key + ", value: " + appRestrictions.getString(key));
+                    appConfiguration.putString(key, appRestrictions.getString(key));
+                }
+                getDevicePolicyManager().setApplicationRestrictions(getCdmDeviceAdmin(),
+                        appIdentifier, appConfiguration);
+                result.put("response", "Configuration sent");
+                operation.setPayLoad(result);
+                operation.setStatus(getContextResources().getString(R.string.operation_value_completed));
+            } else {
+                operation.setOperationResponse("Error occurred while applying restrictions.");
+                operation.setPayLoad(result);
+                operation.setStatus(getContextResources().getString(R.string.operation_value_error));
+            }
+
+        } catch (JSONException e) {
+            operation.setStatus(getContextResources().getString(R.string.operation_value_error));
+            operation.setOperationResponse("Error in parsing restriction payload.");
+            getResultBuilder().build(operation);
+            throw new AndroidAgentException("Invalid JSON format.", e);
+        }
+
+        if (Constants.DEBUG_MODE_ENABLED) {
+            Log.d(TAG, "Application restriction is configured for the '" + appIdentifier + "'");
+        }
+        getResultBuilder().build(operation);
     }
 
     private String getPermissionConstantValue(String key){

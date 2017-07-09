@@ -344,6 +344,7 @@ public class Constants {
 		public static final String LOGCAT = "LOGCAT";
 		public static final String FIRMWARE_UPGRADE_AUTOMATIC_RETRY = "FIRMWARE_UPGRADE_AUTOMATIC_RETRY";
 		public static final String SYSTEM_UPDATE_POLICY = "SYSTEM_UPDATE_POLICY";
+		public static final String REMOTE_APP_CONFIG = "REMOTE_APP_CONFIG";
 	}
 
 	/**
@@ -502,6 +503,8 @@ public class Constants {
 		public static final String BLACK_LIST = "black-list";
 		public static final String PACKAGE_NAME = "packageName";
 		public static final String APP_LIST = "appList";
+		public static final String RESTRICTION_PAYLOAD = "restrictionPayload";
+		public static final String APP_IDENTIFIER = "appIdentifier";
 	}
 
 	public final class SystemUpdatePolicyType {

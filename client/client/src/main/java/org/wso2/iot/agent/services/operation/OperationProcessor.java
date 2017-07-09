@@ -92,6 +92,9 @@ public class OperationProcessor {
 			case Constants.Operation.CAMERA:
 				operationManager.disableCamera(operation);
 				break;
+			case Constants.Operation.REMOTE_APP_CONFIG:
+				operationManager.setApplicationRestriction(operation);
+				break;
 			case Constants.Operation.INSTALL_APPLICATION:
 			case Constants.Operation.INSTALL_APPLICATION_BUNDLE:
 			case Constants.Operation.UPDATE_APPLICATION:
