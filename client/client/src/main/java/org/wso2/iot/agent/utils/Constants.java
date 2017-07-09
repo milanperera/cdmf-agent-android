@@ -367,7 +367,7 @@ public class Constants {
 		public static final String PERMISSION_TYPE = "permissionType";
 		public static final String ALL_PERMISSIONS = "*";
 		public static final String PERMITTED_APP_DATA = "permittedAppData";
-
+		public static final String REMOTE_APP_CONFIG = "REMOTE_APP_CONFIG";
 	}
 
 	/**
@@ -534,6 +534,8 @@ public class Constants {
 		public static final String BLACK_LIST = "black-list";
 		public static final String PACKAGE_NAME = "packageName";
 		public static final String APP_LIST = "appList";
+		public static final String RESTRICTION_PAYLOAD = "restrictionPayload";
+		public static final String APP_IDENTIFIER = "appIdentifier";
 	}
 
 	public final class AppRuntimePermission {

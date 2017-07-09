@@ -220,4 +220,11 @@ public interface VersionBasedOperations {
      */
     void configureCOSUProfile(Operation operation) throws AndroidAgentException;
 
+    /** Configure application restriction to a given app identifier
+     *
+     * @param operation operation object.
+     * @throws AndroidAgentException
+     */
+    void setApplicationRestriction(Operation operation) throws AndroidAgentException;
+
 }
