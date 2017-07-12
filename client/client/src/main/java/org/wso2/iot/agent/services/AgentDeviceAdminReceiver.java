@@ -171,8 +171,9 @@ public class AgentDeviceAdminReceiver extends DeviceAdminReceiver implements API
 
             // Setting Agent App to Lock Task mode
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                devicePolicyManager.setLockTaskPackages(cdmDeviceAdmin,
-                        new String[]{context.getApplicationContext().getPackageName()});
+              // devicePolicyManager.setLockTaskPackages(cdmDeviceAdmin,
+                //       new String[]{context.getApplicationContext().getPackageName()});
+               // devicePolicyManager.setLockTaskPackages(cdmDeviceAdmin,  new String[]{"com.android.nfc"});
             }
 
             // Disallowing Safe Boot
@@ -186,6 +187,7 @@ public class AgentDeviceAdminReceiver extends DeviceAdminReceiver implements API
                             DevicePolicyManager.PERMISSION_GRANT_STATE_GRANTED);
                 }
             }
+
             Intent launch = new Intent(context, SplashActivity.class);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 PersistableBundle persistableBundle = intent.getParcelableExtra(

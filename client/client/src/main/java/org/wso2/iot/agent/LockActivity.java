@@ -46,7 +46,7 @@ public class LockActivity extends Activity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void enablePinnedActivity() {
-        startLockTask();
+        //startLockTask();
         if (Constants.DEBUG_MODE_ENABLED) {
             Log.d(TAG, "Hard lock is enabled");
         }

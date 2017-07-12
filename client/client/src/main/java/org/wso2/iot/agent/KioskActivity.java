@@ -68,7 +68,7 @@ public class KioskActivity extends Activity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
-                startLockTask();
+               // startLockTask();
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage());
             }
@@ -109,6 +109,7 @@ public class KioskActivity extends Activity {
             }
         });
 
+        Toast.makeText(this,"It will take several minutes to initialize the device.", Toast.LENGTH_SHORT).show();
         installKioskApp();
         if (Preference.getBoolean(context.getApplicationContext(), Constants.AGENT_FRESH_START)) {
             launchKioskAppIfExists();
@@ -166,7 +167,7 @@ public class KioskActivity extends Activity {
 
     private void installKioskApp() {
         String appUrl = Preference.getString(getApplicationContext(), Constants.KIOSK_APP_DOWNLOAD_URL);
-        Toast.makeText(context,"Installing Kiosk App", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context,"Installing Kiosk App", Toast.LENGTH_SHORT).show();
         if (appUrl != null) {
             Preference.removePreference(getApplicationContext(), Constants.KIOSK_APP_DOWNLOAD_URL);
             ApplicationManager applicationManager = new ApplicationManager(context.getApplicationContext());

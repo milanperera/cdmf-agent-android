@@ -677,4 +677,12 @@ public class OperationManagerBYOD extends OperationManager {
         Log.d(TAG, "Operation not supported.");
     }
 
+    @Override
+    public void setApplicationRestriction(Operation operation) throws AndroidAgentException {
+        operation.setStatus(getContextResources().getString(R.string.operation_value_error));
+        operation.setOperationResponse("Operation not supported.");
+        getResultBuilder().build(operation);
+        Log.d(TAG, "Operation not supported.");
+    }
+
 }

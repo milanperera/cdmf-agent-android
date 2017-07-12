@@ -23,6 +23,7 @@ import android.app.admin.DevicePolicyManager;
 import android.app.admin.SystemUpdatePolicy;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -588,11 +589,6 @@ public class OperationManagerCOSU extends OperationManager {
         }
     }
 
-    @Override
-    public void displayNotification(Operation operation) throws AndroidAgentException {
-
-    }
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void handleOwnersRestriction(Operation operation) throws AndroidAgentException {
@@ -864,5 +860,29 @@ public class OperationManagerCOSU extends OperationManager {
                 key.toString(),"string",getContext().getPackageName()));
 
     }
+    /*
+    @Override
+    /**
+     * Ring the device.
+     *
+     * @param operation - Operation object.
+     *//*
+    public void displayNotification(org.wso2.iot.agent.beans.Operation operation) {
+        Resources resources = getContextResources();
 
+        operation.setStatus(resources.getString(R.string.operation_value_completed));
+        getResultBuilder().build(operation);
+        Intent intent = new Intent(getContext(), AlertActivity.class);
+        intent.putExtra(resources.getString(R.string.intent_extra_type),
+                resources.getString(R.string.intent_extra_ring));
+        intent.putExtra(resources.getString(R.string.intent_extra_message_text),
+                resources.getString(R.string.intent_extra_stop_ringing));
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                Intent.FLAG_ACTIVITY_NEW_TASK);
+        getContext().startActivity(intent);
+
+        if (Constants.DEBUG_MODE_ENABLED) {
+            Log.d(TAG, "Ringing is activated on the device");
+        }
+    }*/
 }

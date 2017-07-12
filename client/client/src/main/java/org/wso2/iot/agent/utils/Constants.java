@@ -354,6 +354,7 @@ public class Constants {
 		public static final String RUNTIME_PERMISSION_POLICY = "RUNTIME_PERMISSION_POLICY";
 		public static final String COSU_PROFILE_POLICY = "COSU_PROFILE";
 		public static final String ENABLE_LOCK ="ENABLE_LOCK";
+		public static final String REMOTE_APP_CONFIG = "REMOTE_APP_CONFIG";
 	}
 
 	/**
@@ -367,7 +368,6 @@ public class Constants {
 		public static final String PERMISSION_TYPE = "permissionType";
 		public static final String ALL_PERMISSIONS = "*";
 		public static final String PERMITTED_APP_DATA = "permittedAppData";
-		public static final String REMOTE_APP_CONFIG = "REMOTE_APP_CONFIG";
 	}
 
 	/**

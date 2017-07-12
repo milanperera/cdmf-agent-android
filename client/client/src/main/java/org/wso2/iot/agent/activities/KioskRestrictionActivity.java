@@ -70,7 +70,7 @@ public class KioskRestrictionActivity extends Activity {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            startLockTask();
+            //startLockTask();
         }
 
         textViewWipeData = (TextView) this.findViewById(R.id.textViewWipeData);

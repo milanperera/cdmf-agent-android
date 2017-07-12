@@ -195,7 +195,7 @@ public class AuthenticationActivity extends AppCompatActivity implements APIAcce
 
 		if (Constants.OWNERSHIP_COSU.equals(Constants.DEFAULT_OWNERSHIP)) {
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-				startLockTask();
+				//startLockTask();
 			}
 		}
 

@@ -99,9 +99,8 @@ public class KioskAppInstallationListener extends BroadcastReceiver {
                 }
             }
         }
-        devicePolicyManager.setLockTaskPackages(cdmfDeviceAdmin,
-                lockTaskPackages.split(context.getString(R.string.kiosk_application_package_split_regex)));
-        addIfPermissionEnforcementExist(packageName, context);
+        //devicePolicyManager.setLockTaskPackages(cdmfDeviceAdmin, lockTaskPackages.split(context.getString(R.string.kiosk_application_package_split_regex)));
+        //addIfPermissionEnforcementExist(packageName, context);
         launchKioskApp(context, packageName);
     }
 
@@ -113,7 +112,7 @@ public class KioskAppInstallationListener extends BroadcastReceiver {
         int permissionType;
 
         Log.d(TAG, "addIfPremissionEnforcementExist triggered.");
-
+        devicePolicyManager.setPermissionGrantState(cdmfDeviceAdmin,installedPackageName,"android.permission.NFC",1);
         try {
             JSONArray permittedAppsData = new JSONArray(Preference.getString(context,Constants.RuntimePermissionPolicy.PERMITTED_APP_DATA).toString());
             for(int i = 0; i <permittedAppsData.length(); i++) {

@@ -448,6 +448,8 @@
     <string name="txt_never">Never synced. Tap here to sync.</string>
     <string name="txt_sync">Synchronizing…</string>
 
+    <!-- COSU Toast -->
+    <string name="txt_initial_display">Device is initializing its processes. This may take several minutes..</string>
     <!-- Date Util -->
     <string name="date_util_term_less">less than</string>
     <string name="date_util_term_a">a</string>

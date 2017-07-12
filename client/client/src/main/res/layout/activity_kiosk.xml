@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_kiosk_enrollment"
     android:layout_width="match_parent"
@@ -53,12 +54,10 @@
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/textViewKiosk"
-        android:layout_marginBottom="20dp"
         android:visibility="invisible"
         android:listSelector="@android:color/transparent"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="@string/wso2"
@@ -68,6 +67,15 @@
         android:textColor="@color/colorPrimary"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true" />
+    <ImageView
+        android:id="@+id/imageViewWasta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/wastakiosk"/>
 
     <TextView
         android:text="No apps available"
@@ -77,7 +85,8 @@
         android:layout_centerVertical="true"
         android:visibility="visible"
         android:textColor="@color/colorPrimary"
-        android:id="@+id/textViewNoApps" />
+        android:id="@+id/textViewNoApps"
+        android:layout_below="@id/imageViewWasta"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,5 +97,7 @@
         android:id="@+id/textViewWipeData"
         android:text="@string/wipe_the_device"
         android:visibility="invisible"/>
+
+
 
 </RelativeLayout>
