@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2014, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 package org.wso2.iot.agent;
 
 import android.app.Activity;
@@ -15,6 +33,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +45,9 @@ import org.wso2.iot.agent.services.LocalNotification;
 import org.wso2.iot.agent.utils.Constants;
 import org.wso2.iot.agent.utils.Preference;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class KioskActivity extends Activity {
     private TextView textViewWipeData;
     private Context context;
@@ -34,6 +56,7 @@ public class KioskActivity extends Activity {
     private int kioskExit;
     private GridView gridView;
     private AppDrawerAdapter appDrawerAdapter;
+    private TextView textViewTime;
     private final String TAG = KioskActivity.class.getSimpleName();
 
     @Override
@@ -45,6 +68,8 @@ public class KioskActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         Preference.putBoolean(getApplicationContext(), Constants.PreferenceFlag.DEVICE_ACTIVE, true);
         textViewKiosk = (TextView) findViewById(R.id.textViewKiosk);
+        textViewTime = (TextView) findViewById(R.id.textTime);
+
         if (Constants.COSU_SECRET_EXIT) {
             textViewKiosk.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -114,8 +139,33 @@ public class KioskActivity extends Activity {
         if (Preference.getBoolean(context.getApplicationContext(), Constants.AGENT_FRESH_START)) {
             launchKioskAppIfExists();
         }
+        displayTime();
+
     }
 
+    private void displayTime() {
+        Thread t = new Thread() {
+            String date;
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                 date = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+                                textViewTime.setText("Time: "+  date);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        t.start();
+    }
     @Override
     public void onBackPressed() {
 
