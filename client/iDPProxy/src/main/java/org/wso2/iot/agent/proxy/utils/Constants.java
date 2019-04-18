@@ -37,7 +37,7 @@ public class Constants {
 		public static final String MUTUAL_SSL_AUTHENTICATOR = "MUTUAL_SSL_AUTHENTICATOR";
 		public static final String MUTUAL_AUTH_HEADER = "mutual-auth-header";
 		public static final String MUTUAL_AUTH_HEADER_VALUE = "mutual-auth-enabled";
-		public static final String AUTHENTICATOR_IN_USE = OAUTH_AUTHENTICATOR;
+		public static final String AUTHENTICATOR_IN_USE = MUTUAL_SSL_AUTHENTICATOR;
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class Constants {
 		}
 		public static final String OAUTH_HTTP_CLIENT = "OAUTH_HTTP_CLIENT";
 		public static final String MUTUAL_HTTP_CLIENT = "MUTUAL_HTTP_CLIENT";
-		public static final String HTTP_CLIENT_IN_USE = OAUTH_HTTP_CLIENT;
+		public static final String HTTP_CLIENT_IN_USE = MUTUAL_HTTP_CLIENT;
 		public static final int DEFAULT_TIME_OUT = 60000;
 		public static final int DEFAULT_RETRY_COUNT = 3;
 		public static final int DEFAULT_TOKEN_TIME_OUT = 120000;

@@ -29,6 +29,16 @@ android {
         versionName "1.0"
     }
 
+    signingConfigs {
+        config {
+            keyAlias 'platform'
+            keyPassword 'android'
+            storeFile file('../../android.keystore')
+            storePassword 'android'
+        }
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -104,6 +114,7 @@ android {
             buildConfigField "boolean", "SILENT_FIRMWARE_INSTALLATION", "true"
             buildConfigField "int", "FIRMWARE_UPGRADE_CONNECTIVITY_TIMEOUT", "10000"
             buildConfigField "int", "FIRMWARE_UPGRADE_READ_TIMEOUT", "60000"
+            signingConfig signingConfigs.config
         }
     }
 }

@@ -98,7 +98,12 @@ public class MutualSSLClient implements CommunicationClient {
                         getCredentialCertificate(), Constants.KEYSTORE_PASSWORD.toCharArray());
 
                 SSLContext context = SSLContext.getInstance("TLS");
-                context.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+                if(localTrustStore.size() > 0) {
+                    context.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+                } else {
+                    context.init(kmf.getKeyManagers(), null, null);
+                }
+
                 final SSLSocketFactory socketFactory = context.getSocketFactory();
                 HurlStack hurlStack = new HurlStack() {
                     @Override
