@@ -19,7 +19,7 @@
 package org.wso2.iot.agent.proxy.authenticators;
 
 import android.content.Context;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.wso2.iot.agent.proxy.R;
 import org.wso2.iot.agent.proxy.interfaces.AuthenticationCallback;
 import org.wso2.iot.agent.proxy.utils.Constants;

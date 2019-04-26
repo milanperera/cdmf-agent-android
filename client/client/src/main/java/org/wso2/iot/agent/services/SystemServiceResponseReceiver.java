@@ -20,7 +20,7 @@ package org.wso2.iot.agent.services;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.wso2.iot.agent.R;

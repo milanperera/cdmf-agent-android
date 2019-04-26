@@ -24,7 +24,7 @@ import java.io.InputStreamReader;
 import org.wso2.iot.agent.utils.Constants;
 import org.wso2.iot.agent.utils.StreamHandler;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 /**
  * This class handles all the functionality related to executing shell commands

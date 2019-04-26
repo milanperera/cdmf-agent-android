@@ -42,7 +42,7 @@ import android.provider.Browser;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.FileProvider;
 import android.util.Base64;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -68,6 +68,7 @@ import org.wso2.iot.agent.utils.CommonUtils;
 import org.wso2.iot.agent.utils.Constants;
 import org.wso2.iot.agent.utils.Preference;
 import org.wso2.iot.agent.utils.StreamHandler;
+import org.wso2.iot.agent.utils.VResources;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -470,11 +471,7 @@ public class ApplicationManager {
             this.appUrl = Constants.APP_MANAGER_HOST + Constants.APP_DOWNLOAD_ENDPOINT + url;
         } else if (url.contains(Constants.APP_DOWNLOAD_ENDPOINT)) {
             url = url.substring(url.lastIndexOf("/"), url.length());
-            String ipSaved = Constants.DEFAULT_HOST;
-            String prefIP = Preference.getString(context, Constants.PreferenceFlag.IP);
-            if (prefIP != null) {
-                ipSaved = prefIP;
-            }
+            String ipSaved = VResources.getInstance(context).getString(R.string.mdm_url);
             ServerConfig utils = new ServerConfig();
             if (ipSaved != null && !ipSaved.isEmpty()) {
                 utils.setServerIP(ipSaved);

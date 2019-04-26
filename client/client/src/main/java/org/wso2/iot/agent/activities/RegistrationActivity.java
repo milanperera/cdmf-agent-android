@@ -27,7 +27,7 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.view.KeyEvent;
 import android.view.WindowManager;
 
@@ -45,6 +45,7 @@ import org.wso2.iot.agent.utils.CommonDialogUtils;
 import org.wso2.iot.agent.utils.CommonUtils;
 import org.wso2.iot.agent.utils.Constants;
 import org.wso2.iot.agent.utils.Preference;
+import org.wso2.iot.agent.utils.VResources;
 
 import java.util.Map;
 
@@ -121,12 +122,9 @@ public class RegistrationActivity extends Activity implements APIResultCallBack 
 		// Check network connection availability before calling the API.
 		if (CommonUtils.isNetworkAvailable(context)) {
 			// Call device registration API.
-			String ipSaved = Constants.DEFAULT_HOST;
-			String prefIP = Preference.getString(context.getApplicationContext(), Constants.PreferenceFlag.IP);
-			if (prefIP != null) {
-				ipSaved = prefIP;
-			}
-			if (ipSaved != null && !ipSaved.isEmpty()) {
+			String ipSaved = VResources.getInstance(context).getString(R.string.mdm_url);
+
+			if (!ipSaved.isEmpty()) {
 				ServerConfig utils = new ServerConfig();
 				utils.setServerIP(ipSaved);
 

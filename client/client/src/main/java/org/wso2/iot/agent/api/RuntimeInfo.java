@@ -23,7 +23,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.wso2.iot.agent.AndroidAgentException;

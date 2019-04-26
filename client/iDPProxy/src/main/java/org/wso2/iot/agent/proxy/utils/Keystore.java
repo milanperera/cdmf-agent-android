@@ -19,7 +19,7 @@
 
 package org.wso2.iot.agent.proxy.utils;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.wso2.iot.agent.proxy.IdentityProxy;
 
 import java.io.IOException;

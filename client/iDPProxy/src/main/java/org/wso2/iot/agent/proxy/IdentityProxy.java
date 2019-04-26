@@ -21,7 +21,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.wso2.iot.agent.proxy.beans.CredentialInfo;
 import org.wso2.iot.agent.proxy.beans.Token;

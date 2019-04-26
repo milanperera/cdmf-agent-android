@@ -26,7 +26,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.PersistableBundle;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.widget.Toast;
 
 import org.wso2.iot.agent.AndroidAgentException;

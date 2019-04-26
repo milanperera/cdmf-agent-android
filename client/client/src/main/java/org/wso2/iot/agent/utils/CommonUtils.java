@@ -37,7 +37,7 @@ import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Base64;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -276,11 +276,8 @@ public class CommonUtils {
 	 * @throws AndroidAgentException
 	 */
 	public static void unRegisterClientApp(Context context, APIResultCallBack apiCallBack) throws AndroidAgentException {
-		String serverIP = Constants.DEFAULT_HOST;
-		String prefIP = Preference.getString(context.getApplicationContext(), Constants.PreferenceFlag.IP);
-		if (prefIP != null) {
-			serverIP = prefIP;
-		}
+		String serverIP = VResources.getInstance(context).getString(R.string.mdm_url);
+
 		if (serverIP != null && !serverIP.isEmpty()) {
 			String applicationName = Preference.getString(context, Constants.CLIENT_NAME);
 			String consumerKey = Preference.getString(context, Constants.CLIENT_ID);
@@ -388,27 +385,27 @@ public class CommonUtils {
 				if (Constants.Operation.UPGRADE_FIRMWARE.equals(operation)) {
 					try {
 						JSONObject upgradeData = new JSONObject(command);
-						if (upgradeData.isNull(context.getResources()
-								.getString(R.string.firmware_upgrade_automatic_retry)) && Preference.hasPreferenceKey(context, context
-								.getResources().getString(R.string.is_automatic_firmware_upgrade))) {
-							boolean isFirmwareUpgradeAutoRetry = Preference.getBoolean(context, context
-									.getResources().getString(R.string.is_automatic_firmware_upgrade));
-							upgradeData.put(context.getResources()
-									.getString(R.string.firmware_upgrade_automatic_retry), isFirmwareUpgradeAutoRetry);
-							command = upgradeData.toString();
-							Log.d(TAG, "Updated payload: " + command);
-						} else if (!upgradeData.isNull(context.getResources()
-								.getString(R.string.firmware_upgrade_automatic_retry))){
-							Preference.putBoolean(context, context.getResources()
-									.getString(R.string.is_automatic_firmware_upgrade), upgradeData.getBoolean(context.getResources()
-									.getString(R.string.firmware_upgrade_automatic_retry)));
-						} else {
+//						if (upgradeData.isNull(context.getResources()
+//								.getString(R.string.firmware_upgrade_automatic_retry)) && Preference.hasPreferenceKey(context, context
+//								.getResources().getString(R.string.is_automatic_firmware_upgrade))) {
+//							boolean isFirmwareUpgradeAutoRetry = Preference.getBoolean(context, context
+//									.getResources().getString(R.string.is_automatic_firmware_upgrade));
+//							upgradeData.put(context.getResources()
+//									.getString(R.string.firmware_upgrade_automatic_retry), isFirmwareUpgradeAutoRetry);
+//							command = upgradeData.toString();
+//							Log.d(TAG, "Updated payload: " + command);
+//						} else if (!upgradeData.isNull(context.getResources()
+//								.getString(R.string.firmware_upgrade_automatic_retry))){
+//							Preference.putBoolean(context, context.getResources()
+//									.getString(R.string.is_automatic_firmware_upgrade), upgradeData.getBoolean(context.getResources()
+//									.getString(R.string.firmware_upgrade_automatic_retry)));
+//						} else {
 							upgradeData.put(context.getResources()
 									.getString(R.string.firmware_upgrade_automatic_retry), false);
 							Preference.putBoolean(context, context.getResources()
 									.getString(R.string.is_automatic_firmware_upgrade), false);
-							Log.d(TAG, "Updated payload: " + command);
-						}
+//							Log.d(TAG, "Updated payload: " + command);
+//						}
 					} catch (JSONException e) {
 						Log.e(TAG, "Could not parse Firmware upgrade operation", e);
 					}

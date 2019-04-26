@@ -21,7 +21,7 @@ package org.wso2.iot.agent.utils;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 /**
  * This class is used to create database for the agent app.

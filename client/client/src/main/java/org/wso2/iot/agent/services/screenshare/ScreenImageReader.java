@@ -24,7 +24,7 @@ import android.media.Image;
 import android.media.ImageReader;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.view.Display;
 import android.view.Surface;
 

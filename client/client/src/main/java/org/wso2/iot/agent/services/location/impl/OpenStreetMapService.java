@@ -19,7 +19,7 @@
 package org.wso2.iot.agent.services.location.impl;
 
 import android.location.Location;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -160,13 +160,14 @@ public class OpenStreetMapService implements ReverseGeoCodingService {
                     }
 
                     if (Constants.DEBUG_MODE_ENABLED) {
-                        String addr = "Address: " +
-                                currentAddress.getStreet1() + ", " +
-                                currentAddress.getStreet2() + ", " +
-                                currentAddress.getCity() + ", " +
-                                currentAddress.getState() + ", " +
-                                currentAddress.getZip() + ", " +
-                                currentAddress.getCountry();
+                        String addr = new StringBuilder().append("Address: ")
+                                .append(currentAddress.getStreet1() + ", ")
+                                .append(currentAddress.getStreet2() + ", ")
+                                .append(currentAddress.getCity() + ", ")
+                                .append(currentAddress.getState() + ", ")
+                                .append(currentAddress.getZip() + ", ")
+                                .append(currentAddress.getCountry())
+                                .toString();
                         Log.d(TAG, addr);
                     }
                 } catch (JSONException e) {

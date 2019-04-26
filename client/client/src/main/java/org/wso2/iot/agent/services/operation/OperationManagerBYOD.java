@@ -28,7 +28,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;

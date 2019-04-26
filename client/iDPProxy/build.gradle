@@ -22,8 +22,8 @@ android {
     publishNonDefault true
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 25
+        minSdkVersion 22
+        targetSdkVersion 22
     }
 
     signingConfigs {
@@ -184,7 +184,14 @@ android {
     }
 }
 
+repositories {
+    flatDir{
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile 'commons-codec:commons-codec:20041127.091804'
-    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile(name:'DeveloperSDK-release', ext:'aar')
 }

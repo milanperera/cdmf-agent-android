@@ -19,7 +19,7 @@
 package org.wso2.iot.agent.proxy.clients;
 
 import android.content.Context;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.HurlStack;

@@ -22,7 +22,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.wso2.iot.agent.events.listeners.RuntimeStateListener;
 import org.wso2.iot.agent.utils.Constants;
 

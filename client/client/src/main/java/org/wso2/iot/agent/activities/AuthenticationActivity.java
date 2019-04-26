@@ -41,7 +41,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.util.Linkify;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;

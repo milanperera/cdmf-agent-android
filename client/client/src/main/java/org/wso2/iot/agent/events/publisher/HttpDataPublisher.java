@@ -19,7 +19,7 @@
 package org.wso2.iot.agent.events.publisher;
 
 import android.content.Context;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.wso2.iot.agent.AndroidAgentException;
 import org.wso2.iot.agent.api.DeviceInfo;
 import org.wso2.iot.agent.beans.ServerConfig;

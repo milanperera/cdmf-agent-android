@@ -19,7 +19,7 @@
 package org.wso2.iot.system.service.api;
 
 import android.content.Context;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

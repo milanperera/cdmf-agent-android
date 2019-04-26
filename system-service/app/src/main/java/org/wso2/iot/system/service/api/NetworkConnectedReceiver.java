@@ -26,8 +26,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
-import org.wso2.iot.system.service.utils.Constants;
+import com.verifone.utilities.Log;
+import org.wso2.emm.system.service.utils.Constants;
 
 /**
  * This class handles all the functionality required for monitoring device network connectivity.

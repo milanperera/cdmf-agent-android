@@ -19,7 +19,7 @@ package org.wso2.iot.agent.services.operation;
 
 import android.content.Context;
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;

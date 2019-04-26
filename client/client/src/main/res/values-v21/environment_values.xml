@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+           tools:ignore="MissingTranslation">
+
+    <!-- ENVIRONMENTS LIST (used in list of environments and as postfixes for resources) -->
+    <string name="qa">qa</string>
+    <string name="production">prod</string>
+    <string name="sbox">sbox</string>
+
+    <!-- DECLARATION BLOCK -->
+
+    <string name="cert_password"/>
+    <string name="mdm_url"/>
+    <string name="logs_endpoint"/>
+    <string name="geolocation"/>
+
+
+
+    <!-- VALUES (postfix = environment) -->
+
+    <!--<string name="cert_password_artifactory">swordfish</string>-->
+    <!--<string name="cert_password_development">swordfish</string>-->
+    <!--<string name="cert_password_qa">swordfish</string>-->
+    <!--<string name="cert_password_prod">KM;9tLv*M9Ap</string>-->
+    <!--<string name="cert_password_staging">swordfish</string>-->
+    <!--<string name="cert_password_staging_test">swordfish</string>-->
+    <!--<string name="cert_password_staging1">swordfish</string>-->
+
+    <string name="mdm_url_development">https://iot.vf.entgra.com</string>
+    <string name="mdm_url_prod">https://iot.vf.entgra.com</string>
+    <string name="mdm_url_qa">https://iot.vf.entgra.com</string>
+    <string name="mdm_url_staging">https://iot.vf.entgra.com</string>
+    <string name="mdm_url_staging_test">https://iot.vf.entgra.com</string>
+    <string name="mdm_url_sbox">https://iot.vf.entgra.com</string>
+
+    <string name="logs_endpoint_development">https://dev.sf.vfcarbon.com/android-proxy/v1/logs</string>
+    <string name="logs_endpoint_prod">https://prod.sf.vfcarbon.com/android-proxy/v1/logs</string>
+    <string name="logs_endpoint_qa">https://qa2.sf.vfcarbon.com/android-proxy/v1/logs</string>
+    <string name="logs_endpoint_staging">https://staging.sf.vfcarbon.com/android-proxy/v1/logs</string>
+    <string name="logs_endpoint_staging_test">https://staging-test.sf.vfcarbon.com/android-proxy/v1/logs</string>
+    <string name="logs_endpoint_sbox">https://staging1.sf.vfcarbon.com/android-proxy/v1/logs</string>
+
+    <string name="geolocation_development">https://dev.sf.vfcarbon.com:443/android-proxy/v1/geolocate</string>
+    <string name="geolocation_prod">https://prod.sf.vfcarbon.com:443/android-proxy/v1/geolocate</string>
+    <string name="geolocation_qa">https://qa2.sf.vfcarbon.com:443/android-proxy/v1/geolocate</string>
+    <string name="geolocation_staging">https://staging.sf.vfcarbon.com:443/android-proxy/v1/geolocate</string>
+    <string name="geolocation_staging_test">https://staging-test.sf.vfcarbon.com:443/android-proxy/v1/geolocate</string>
+    <string name="geolocation_sbox">https://staging1.sf.vfcarbon.com:443/android-proxy/v1/geolocate</string>
+
+
+</resources>

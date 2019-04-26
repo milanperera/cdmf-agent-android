@@ -23,7 +23,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.ServiceManager;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.java_websocket.drafts.Draft_17;
 import org.json.JSONException;

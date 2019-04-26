@@ -19,7 +19,7 @@
 package org.wso2.iot.system.service.api;
 
 import android.content.Context;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.wso2.iot.system.service.R;
 import org.wso2.iot.system.service.utils.Constants;
 import org.wso2.iot.system.service.utils.Preference;
@@ -67,9 +67,9 @@ public class OTAServerConfig {
                     DEFAULT_OTA_SERVER_PORT, buildConfigAddress);
         }
 
-        Log.d(TAG, "create a new server config: package url " + updatePackageURL.toString() + ":" +
+        Log.i(TAG, "create a new server config: package url " + updatePackageURL.toString() + ":" +
                    updatePackageURL.getPort());
-        Log.d(TAG, "build.prop URL:" + buildPropURL.toString());
+        Log.i(TAG, "build.prop URL:" + buildPropURL.toString());
     }
 
     public URL getPackageURL() {

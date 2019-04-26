@@ -1,6 +1,6 @@
 package org.wso2.iot.agent.proxy.utils;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -18,7 +18,7 @@
 
 package org.wso2.iot.agent.events.listeners;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.wso2.iot.agent.AndroidAgentException;
 import org.wso2.iot.agent.api.RuntimeInfo;
 import org.wso2.iot.agent.beans.Application;

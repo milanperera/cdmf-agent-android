@@ -18,7 +18,7 @@
 
 package org.wso2.iot.agent.api;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;

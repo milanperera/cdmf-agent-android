@@ -38,7 +38,7 @@ import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.view.WindowManager;
 
 import org.wso2.iot.agent.transport.websocket.WebSocketSessionHandler;

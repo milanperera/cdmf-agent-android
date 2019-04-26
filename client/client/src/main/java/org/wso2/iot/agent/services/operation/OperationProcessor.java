@@ -20,7 +20,7 @@ package org.wso2.iot.agent.services.operation;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

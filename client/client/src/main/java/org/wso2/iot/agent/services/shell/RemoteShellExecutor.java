@@ -19,7 +19,7 @@
 package org.wso2.iot.agent.services.shell;
 
 import android.content.Context;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.wso2.iot.agent.beans.Operation;
 

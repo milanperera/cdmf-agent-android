@@ -36,7 +36,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;

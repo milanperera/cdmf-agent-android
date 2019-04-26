@@ -17,7 +17,7 @@
  */
 package org.wso2.iot.agent.services.operation.util;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.apache.sshd.SshServer;
 import org.apache.sshd.common.NamedFactory;

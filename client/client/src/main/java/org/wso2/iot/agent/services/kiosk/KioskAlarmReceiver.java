@@ -25,7 +25,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.WakefulBroadcastReceiver;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.wso2.iot.agent.KioskActivity;
 import org.wso2.iot.agent.activities.KioskRestrictionActivity;

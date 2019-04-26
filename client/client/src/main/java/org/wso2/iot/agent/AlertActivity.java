@@ -31,7 +31,7 @@ import android.net.Uri;
 import android.net.VpnService;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;

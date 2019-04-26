@@ -20,7 +20,7 @@ package org.wso2.iot.agent.proxy;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.Preference;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;

@@ -22,7 +22,7 @@ import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.wso2.iot.agent.utils.Constants;
 

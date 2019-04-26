@@ -23,7 +23,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;

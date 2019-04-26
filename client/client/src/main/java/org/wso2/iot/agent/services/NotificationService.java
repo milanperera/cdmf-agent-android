@@ -26,7 +26,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.wso2.iot.agent.AlertActivity;

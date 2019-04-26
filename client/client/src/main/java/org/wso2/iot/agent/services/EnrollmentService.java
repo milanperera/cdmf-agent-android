@@ -23,7 +23,7 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -44,6 +44,7 @@ import org.wso2.iot.agent.services.location.LocationService;
 import org.wso2.iot.agent.utils.CommonUtils;
 import org.wso2.iot.agent.utils.Constants;
 import org.wso2.iot.agent.utils.Preference;
+import org.wso2.iot.agent.utils.VResources;
 
 import java.util.Map;
 
@@ -197,11 +198,7 @@ public class EnrollmentService extends IntentService implements APIResultCallBac
     }
 
     private void getConfigurationsFromServer() {
-        String ipSaved = Constants.DEFAULT_HOST;
-        String prefIP = Preference.getString(context.getApplicationContext(), Constants.PreferenceFlag.IP);
-        if (prefIP != null) {
-            ipSaved = prefIP;
-        }
+        String ipSaved = VResources.getInstance(context).getString(R.string.mdm_url);
 
         if (!ipSaved.isEmpty()) {
             Log.i(TAG, "EMM auto enrollment, retrieving configurations from server.");
@@ -316,11 +313,8 @@ public class EnrollmentService extends IntentService implements APIResultCallBac
         // Check network connection availability before calling the API.
         if (CommonUtils.isNetworkAvailable(context)) {
             // Call device registration API.
-            String ipSaved = Constants.DEFAULT_HOST;
-            String prefIP = Preference.getString(context.getApplicationContext(), Constants.PreferenceFlag.IP);
-            if (prefIP != null) {
-                ipSaved = prefIP;
-            }
+            String ipSaved = VResources.getInstance(context).getString(R.string.mdm_url);
+
             if (!ipSaved.isEmpty()) {
                 ServerConfig utils = new ServerConfig();
                 utils.setServerIP(ipSaved);
@@ -381,11 +375,8 @@ public class EnrollmentService extends IntentService implements APIResultCallBac
         deviceInfoPayload.build();
 
         String replyPayload = deviceInfoPayload.getDeviceInfoPayload();
-        String ipSaved = Constants.DEFAULT_HOST;
-        String prefIP = Preference.getString(context, Constants.PreferenceFlag.IP);
-        if (prefIP != null) {
-            ipSaved = prefIP;
-        }
+        String ipSaved = VResources.getInstance(context).getString(R.string.mdm_url);
+
         if (!ipSaved.isEmpty()) {
             ServerConfig utils = new ServerConfig();
             utils.setServerIP(ipSaved);

@@ -27,7 +27,7 @@ import android.net.wifi.WifiEnterpriseConfig;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.util.Base64;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.wso2.iot.agent.AndroidAgentException;
 import org.wso2.iot.agent.beans.WifiProfile;

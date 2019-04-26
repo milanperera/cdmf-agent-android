@@ -23,7 +23,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.multidex.MultiDexApplication;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.splunk.mint.Mint;
 
@@ -37,6 +37,7 @@ public class AgentApplication extends MultiDexApplication {
     // Configs
     private int requestCode = 0;
     private int relaunchDelay = 5000;
+    private static final String TAG = AgentApplication.class.getSimpleName();
 
     public AgentApplication() {
         // setup handler for uncaught exception
@@ -79,6 +80,11 @@ public class AgentApplication extends MultiDexApplication {
 
         if (Constants.SYSTEM_APP_ENABLED) {
             CommonUtils.registerSystemAppReceiver(this);
+        }
+
+        if (!Log.isInitialized()) {
+            android.util.Log.d(TAG, "starting Logging");
+            Log.initialize(this);
         }
     }
 }

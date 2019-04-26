@@ -23,7 +23,7 @@ import android.net.VpnService;
 import android.os.Handler;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.widget.Toast;
 import org.wso2.iot.agent.AlertActivity;
 import org.wso2.iot.agent.R;

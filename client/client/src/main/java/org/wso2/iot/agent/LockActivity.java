@@ -2,7 +2,7 @@ package org.wso2.iot.agent;
 
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.view.Window;
 import android.view.WindowManager;
 

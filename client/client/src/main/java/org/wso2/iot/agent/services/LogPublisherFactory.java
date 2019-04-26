@@ -1,6 +1,8 @@
 package org.wso2.iot.agent.services;
 
 import android.content.Context;
+
+import org.wso2.iot.agent.events.publisher.AndroidEndpointPublisher;
 import org.wso2.iot.agent.events.publisher.DataPublisher;
 import org.wso2.iot.agent.events.publisher.HttpDataPublisher;
 import org.wso2.iot.agent.events.publisher.SplunkLogPublisher;
@@ -25,6 +27,10 @@ public class LogPublisherFactory {
                 splunkLogPublisher = new SplunkLogPublisher(context);
             }
             return splunkLogPublisher;
+        } else if (Constants.LogPublisher.LOGGLY_PUBLISHER.equals(Constants.LogPublisher.LOG_PUBLISHER_IN_USE)) {
+            return new org.wso2.iot.agent.events.publisher.LogglyPublisher();
+        } else if (Constants.LogPublisher.ANDROID_ENDPOINT_PUBLISHER.equals(Constants.LogPublisher.LOG_PUBLISHER_IN_USE)) {
+            return new AndroidEndpointPublisher();
         } else {
             return null;
         }

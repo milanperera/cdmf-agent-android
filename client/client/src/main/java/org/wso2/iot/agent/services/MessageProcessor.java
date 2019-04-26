@@ -26,7 +26,6 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -35,6 +34,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.gson.Gson;
+import com.verifone.utilities.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +56,7 @@ import org.wso2.iot.agent.utils.AppManagementRequestUtil;
 import org.wso2.iot.agent.utils.CommonUtils;
 import org.wso2.iot.agent.utils.Constants;
 import org.wso2.iot.agent.utils.Preference;
+import org.wso2.iot.agent.utils.VResources;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -174,11 +175,7 @@ public class MessageProcessor implements APIResultCallBack {
         }
         isInCriticalPath = true;
         lastSyncAt = currentTime;
-        String ipSaved = Constants.DEFAULT_HOST;
-        String prefIP = Preference.getString(context.getApplicationContext(), Constants.PreferenceFlag.IP);
-        if (prefIP != null) {
-            ipSaved = prefIP;
-        }
+       	String ipSaved = VResources.getInstance(context).getString(R.string.mdm_url);
         ServerConfig utils = new ServerConfig();
         utils.setServerIP(ipSaved);
         String url = utils.getAPIServerURL(context) + Constants.DEVICES_ENDPOINT + deviceId + Constants.NOTIFICATION_ENDPOINT;

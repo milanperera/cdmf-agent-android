@@ -18,7 +18,7 @@
 
 package org.wso2.iot.agent.services;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;

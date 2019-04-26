@@ -24,7 +24,7 @@ import android.content.res.Resources;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;

@@ -19,7 +19,7 @@ package org.wso2.iot.agent.services.kiosk;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.wso2.iot.agent.activities.SplashActivity;
 
 public class KioskUnlockService extends IntentService {

@@ -19,7 +19,7 @@
 package org.wso2.iot.agent.services;
 
 import android.content.Intent;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;

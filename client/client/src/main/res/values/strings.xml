@@ -221,6 +221,7 @@
     <string name="shared_pref_reboot_done">rebootDone</string>
     <string name="shared_pref_reboot_status">rebootStatus</string>
     <string name="shared_pref_reboot_result">rebootResult</string>
+    <string name="shared_pref_location">location</string>
 
     <!-- ERROR MESSAGES -->
     <string name="error_clear_passcode_nougat">Passcode clearing is not supported in the BYOD enrollment for Android Nougat upwards</string>

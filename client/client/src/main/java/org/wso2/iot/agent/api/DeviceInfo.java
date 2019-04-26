@@ -17,17 +17,24 @@
  */
 package org.wso2.iot.agent.api;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import android.annotation.SuppressLint;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.hardware.usb.UsbDevice;
+import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
-import android.provider.Settings.Secure;
+
 import android.telephony.TelephonyManager;
 
 import org.wso2.iot.agent.R;
@@ -35,6 +42,7 @@ import org.wso2.iot.agent.services.AgentDeviceAdminReceiver;
 import org.wso2.iot.agent.utils.CommonUtils;
 import org.wso2.iot.agent.utils.Constants;
 import org.wso2.iot.agent.utils.Preference;
+import com.verifone.utilities.Log;
 
 import java.util.List;
 
@@ -48,12 +56,20 @@ public class DeviceInfo {
 	private TelephonyManager telephonyManager;
 	private DevicePolicyManager devicePolicyManager;
 	private ComponentName cdmDeviceAdmin;
+	private static final String BUILD_DATE_UTC_PROPERTY = "ro.build.date.utc";
+	private UsbManager usbManager;
+    private String deviceId;
+	private SharedPreferences mainPref;
+	private static final String TAG = DeviceInfo.class.getSimpleName();
+
+
 
 	public DeviceInfo(Context context) {
 		this.context = context;
 		this.resources = context.getResources();
 		this.telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 		this.devicePolicyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
+        this.mainPref = context.getSharedPreferences(context.getResources().getString(R.string.shared_pref_package), Context.MODE_PRIVATE);
 		cdmDeviceAdmin = new ComponentName(context, AgentDeviceAdminReceiver.class);
 	}
 
@@ -129,18 +145,47 @@ public class DeviceInfo {
 	 * @return - Device IMEI number.
 	 */
 	public String getDeviceId() {
+        if (this.deviceId != null) {
+            return this.deviceId;
+        }
 
-		String deviceId = null;
-
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-			deviceId = telephonyManager.getDeviceId();
+		this.deviceId = this.mainPref.getString("deviceId", null);
+		if (this.deviceId != null) {
+			return this.deviceId;
 		}
 
-		if (deviceId == null || deviceId.isEmpty()) {
-			deviceId = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
+
+
+		if (this.context != null)
+			this.usbManager = (UsbManager) this.context.getSystemService(Context.USB_SERVICE);
+
+		if (this.usbManager != null) {
+			HashMap<String, UsbDevice> usbDevices = this.usbManager.getDeviceList();
+			if (!usbDevices.isEmpty()) {
+				for (Map.Entry<String, UsbDevice> entry : usbDevices.entrySet()) {
+					UsbDevice device = entry.getValue();
+					int deviceVID = device.getVendorId();
+					int devicePID = device.getProductId();
+
+					if (deviceVID == 4554 && devicePID == 51729 && device.getManufacturerName().equals("Verifone Systems")) {
+						this.deviceId = device.getSerialNumber().trim();
+                        Log.d(TAG, "Using serial number: " + deviceId);
+                        break;
+					}
+				}
+			} else {
+				Log.e(TAG, "Could not get serial number from terminal; has it booted up yet?");
+			}
 		}
-		
-		return deviceId;
+
+		return this.deviceId;
+	}
+
+	public void setDeviceId(String deviceId){
+		this.deviceId = deviceId;
+		SharedPreferences.Editor editor = mainPref.edit();
+		editor.putString("deviceId", deviceId);
+		editor.commit();
 	}
 
 	/**
@@ -175,7 +220,10 @@ public class DeviceInfo {
 	 * @return - Device rooted status.
 	 */
 	public boolean isRooted() {
-		return RootChecker.isDeviceRooted();
+//		rootChecker = new Root();
+//		return rootChecker.isDeviceRooted();
+
+		return false;
 	}
 
 	/**

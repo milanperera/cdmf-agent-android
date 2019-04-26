@@ -21,7 +21,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
+import com.verifone.utilities.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

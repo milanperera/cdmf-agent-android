@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.wso2.iot.agent.proxy.IdentityProxy;
 import org.wso2.iot.agent.services.location.impl.OpenStreetMapService;

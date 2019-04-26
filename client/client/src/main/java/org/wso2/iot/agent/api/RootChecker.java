@@ -17,7 +17,7 @@
  */
 package org.wso2.iot.agent.api;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 import org.wso2.iot.agent.utils.Constants;
 import java.io.File;
 

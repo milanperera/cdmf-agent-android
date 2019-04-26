@@ -22,7 +22,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.wso2.iot.agent.R;
 import org.wso2.iot.agent.utils.Constants;

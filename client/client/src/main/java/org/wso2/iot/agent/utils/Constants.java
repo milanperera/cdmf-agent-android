@@ -162,6 +162,7 @@ public class Constants {
 	public static final int PERMISSION_MISSING_NOTIFICATION_ID = 1;
 	public static final int LOCATION_DISABLED_NOTIFICATION_ID = 2;
 	public static final String NOTIFIRE_FREQUENCY_VALUE_KEY = "value";
+	public static final String LOGGLY_URL = "http://logs-01.loggly.com/inputs/85927b81-1697-4cb1-a818-81e2b6d5d698/tag/http/";
 	/**
 	 * Device certificates.
 	 */
@@ -236,9 +237,11 @@ public class Constants {
 	public final class LogPublisher {
 		public static final String DAS_PUBLISHER = "DAS_PULISHER";
 		public static final String SPLUNK_PUBLISHER = "SPLUNK_PUBLISHER";
+		public static final String LOGGLY_PUBLISHER = "LOGGLY_PUBLISHER";
 		public static final String LOG_PUBLISHER_IN_USE = BuildConfig.LOG_PUBLISHER_IN_USE;
 		public static final String LOG_LEVEL = BuildConfig.LOG_LEVEL;
 		public static final int NUMBER_OF_LOG_LINES = BuildConfig.NUMBER_OF_LOG_LINES;
+		public static final String ANDROID_ENDPOINT_PUBLISHER = "ANDROID_ENDPOINT_PUBLISHER";
 
 		private LogPublisher() {
 			throw new AssertionError();

@@ -18,10 +18,11 @@
 package org.wso2.iot.agent.beans;
 
 import android.content.Context;
-import android.util.Log;
 
+import org.wso2.iot.agent.R;
 import org.wso2.iot.agent.utils.Constants;
 import org.wso2.iot.agent.utils.Preference;
+import org.wso2.iot.agent.utils.VResources;
 
 /**
  * This class represents the server configuration parameters.
@@ -41,48 +42,19 @@ public class ServerConfig {
 	}
 
 	public String getServerURL(Context context) {
-		if (Constants.DEFAULT_HOST != null && getHostFromPreferences(context).contains(Constants.DEFAULT_HOST)) {
-			serverURL = Constants.DEFAULT_HOST;
-		} else {
-			serverURL = getProtocolFromPreferences(context) + getHostFromPreferences(context) + COLON +
-			            getPortFromPreferences(context);
-		}
+		serverURL = VResources.getInstance(context).getString(R.string.mdm_url);
 		return serverURL;
 	}
 
-	public void setServerURL(Context context, String serverURL) {
-		this.serverURL = serverURL;
-	}
-
 	public String getAPIServerURL(Context context) {
-		if (Constants.DEFAULT_HOST != null) {
-			APIServerURL = Constants.DEFAULT_HOST;
-		} else {
-			APIServerURL = getProtocolFromPreferences(context) + getHostFromPreferences(context) + COLON +
-			               getPortFromPreferences(context);
-		}
+		APIServerURL = VResources.getInstance(context).getString(R.string.mdm_url);
 		return APIServerURL;
 	}
 
-	public String getProtocolFromPreferences (Context context) {
-		if (Preference.getString(context, Constants.PreferenceFlag.PROTOCOL) != null) {
-			return Preference.getString(context, Constants.PreferenceFlag.PROTOCOL);
-		} else {
-			return Constants.SERVER_PROTOCOL;
-		}
-	}
-
-	public String getPortFromPreferences (Context context) {
-		if (Preference.getString(context, Constants.PreferenceFlag.PORT) != null) {
-			return Preference.getString(context, Constants.PreferenceFlag.PORT);
-		} else {
-			return Constants.API_SERVER_PORT;
-		}
-	}
-
 	public String getHostFromPreferences (Context context) {
-		if (Preference.getString(context, Constants.PreferenceFlag.IP) != null) {
-			return Preference.getString(context, Constants.PreferenceFlag.IP);
+	    String host = Preference.getString(context, Constants.PreferenceFlag.IP);
+		if (host != null) {
+			return host;
 		} else if (serverIP != null) {
 			return serverIP;
 		} else if (Constants.DEFAULT_HOST != null) {
@@ -92,7 +64,4 @@ public class ServerConfig {
 		}
 	}
 
-	public void setAPIServerURL(String aPIServerURL) {
-		APIServerURL = aPIServerURL;
-	}
 }

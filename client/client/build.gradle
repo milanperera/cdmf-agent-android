@@ -25,6 +25,9 @@ repositories {
         url 'https://maven.google.com/'
         name 'Google'
     }
+    flatDir{
+        dirs 'libs'
+    }
 }
 
 android {
@@ -32,8 +35,8 @@ android {
     buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "org.wso2.iot.agent"
-        minSdkVersion 17
-        targetSdkVersion 25
+        minSdkVersion 22
+        targetSdkVersion 22
         multiDexEnabled true
 
         versionCode 3030100
@@ -796,6 +799,8 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile "org.apache.commons:commons-lang3:3.6"
     compile 'com.android.support:multidex:1.0.1'
+    compile(name:'DeveloperSDK-release', ext:'aar')
+    compile(name:'UserManagement-release', ext:'aar')
 }
 
 apply plugin: 'com.google.gms.google-services'

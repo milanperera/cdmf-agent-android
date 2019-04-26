@@ -17,7 +17,7 @@
  */
 package org.wso2.iot.agent.services.operation.util;
 
-import android.util.Log;
+import com.verifone.utilities.Log;
 
 import org.apache.ftpserver.FtpServer;
 import org.apache.ftpserver.FtpServerFactory;
