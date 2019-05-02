@@ -70,7 +70,12 @@ public class EnrollmentService extends IntentService implements APIResultCallBac
         info = new DeviceInfo(context);
         cdmDeviceAdmin = new ComponentName(this, AgentDeviceAdminReceiver.class);
         if (Constants.DEFAULT_HOST != null) {
-            startEnrollment();
+            if (Preference.getBoolean(this, Constants.PreferenceFlag.DEVICE_ACTIVE)) {
+                Log.i(TAG, "Device is already enrolled, hence auto enrollment service will " +
+                        "not be started");
+            } else {
+                startEnrollment();
+            }
         } else {
             Log.e(TAG, "Auto enrollment failed, default host not set.");
         }

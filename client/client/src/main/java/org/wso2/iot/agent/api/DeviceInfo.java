@@ -177,6 +177,10 @@ public class DeviceInfo {
 				Log.e(TAG, "Could not get serial number from terminal; has it booted up yet?");
 			}
 		}
+        // TODO: Remove this when going for production
+		if (this.deviceId == null) {
+				deviceId = telephonyManager.getDeviceId();
+		}
 
 		return this.deviceId;
 	}

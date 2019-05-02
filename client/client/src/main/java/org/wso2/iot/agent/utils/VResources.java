@@ -167,6 +167,7 @@ public final class VResources {
     @NonNull
     public String getEnvironment() throws EnvironmentException {
         String environmentName = mResources.getString(R.string.qa);
+        // TODO: Uncomment this when going for production
 //        BuildType osBuildType = getOSBuildType();
 //        switch (osBuildType) {
 //            case ENGINEERING:
