@@ -18,109 +18,109 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 23
     buildToolsVersion "25.0.3"
-
-    defaultConfig {
-        applicationId "org.wso2.iot.system.service"
-        minSdkVersion 17
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-    }
 
     signingConfigs {
         config {
             keyAlias 'platform'
             keyPassword 'android'
-            storeFile file('../../android.keystore')
+            storeFile file('../../swordfish.keystore')
             storePassword 'android'
         }
     }
 
-
+    defaultConfig {
+        applicationId "org.wso2.iot.system.service"
+        minSdkVersion 22
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            // DEBUG_MODE_ENABLED: Make the agent print the debug logs.
-            buildConfigField "boolean", "DEBUG_MODE_ENABLED", "false"
-            // AGENT_PACKAGE: If a modification of the agent's package name is done, this must be
-            // altered
-            buildConfigField "String", "AGENT_PACKAGE", "\"org.wso2.iot.agent\""
-            // SYSTEM_APP_PACKAGE: If a modification of the system app's package name is done, this
-            // must be altered
-            buildConfigField "String", "SYSTEM_APP_PACKAGE", "\"org.wso2.iot.system.service\""
-            // AGENT_APP_LAUNCH_ACTIVITY: Default launcher activity class name relative to
-            // agent package name
-            buildConfigField "String", "AGENT_APP_LAUNCH_ACTIVITY", "\"activities.SplashActivity\""
-            // DEFAULT_OTA_SERVER_ADDRESS: Default OTA upgrade server address
-            buildConfigField "String", "DEFAULT_OTA_SERVER_ADDRESS", "null"
-            // DEFAULT_OTA_SERVER_ADDRESS: Default OTA upgrade server protocol
-            buildConfigField "String", "DEFAULT_OTA_SERVER_PROTOCOL", "\"http\""
-            // DEFAULT_OTA_SERVER_ADDRESS: Default OTA upgrade server directory path to
-            // upgrade artifacts
-            buildConfigField "String", "DEFAULT_OTA_SERVER_SUB_DIRECTORY", "null"
-            // DEFAULT_OTA_SERVER_PORT: Port of the OTA upgrade server
-            buildConfigField "int", "DEFAULT_OTA_SERVER_PORT", "80"
-            // REQUIRED_BATTERY_LEVEL_TO_FIRMWARE_UPGRADE: Minimum battery level required to
-            // initiate firmware upgrade
-            buildConfigField "int", "REQUIRED_BATTERY_LEVEL_TO_FIRMWARE_UPGRADE", "50"
-            // DEFAULT_OTA_BUILD_PROP_FILE: Build property file to validate the upgrade
-            buildConfigField "String", "DEFAULT_OTA_BUILD_PROP_FILE", "\"build.prop\""
-            // DEFAULT_OTA_ZIP_FILE: Default suffix of the update package
-            buildConfigField "String", "DEFAULT_OTA_ZIP_FILE", "\".ota.zip\""
-            // UPDATE_PACKAGE_NAME: Default name of the OTA zip file
-            buildConfigField "String", "UPDATE_PACKAGE_NAME", "\"update.zip\""
-            // SILENT_FIRMWARE_INSTALLATION: Suppress all messages & confirmations during
-            // firmware upgrade
-            buildConfigField "boolean", "SILENT_FIRMWARE_INSTALLATION", "false"
-            buildConfigField "int", "FIRMWARE_UPGRADE_CONNECTIVITY_TIMEOUT", "10000"
-            buildConfigField "int", "FIRMWARE_UPGRADE_READ_TIMEOUT", "60000"
-        }
-        debug {
-            // DEBUG_MODE_ENABLED: Make the agent print the debug logs.
-            // Make this false in production.
-            buildConfigField "boolean", "DEBUG_MODE_ENABLED", "true"
-            // AGENT_PACKAGE: If a modification of the agent's package name is done, this must be
-            // altered
-            buildConfigField "String", "AGENT_PACKAGE", "\"org.wso2.iot.agent\""
-            // SYSTEM_APP_PACKAGE: If a modification of the system app's package name is done, this
-            // must be altered
-            buildConfigField "String", "SYSTEM_APP_PACKAGE", "\"org.wso2.iot.system.service\""
-            // AGENT_APP_LAUNCH_ACTIVITY: Default launcher activity class name relative to
-            // agent package name
-            buildConfigField "String", "AGENT_APP_LAUNCH_ACTIVITY", "\"activities.SplashActivity\""
-            // DEFAULT_OTA_SERVER_ADDRESS: Default OTA upgrade server address
-            buildConfigField "String", "DEFAULT_OTA_SERVER_ADDRESS", "null"
-            // DEFAULT_OTA_SERVER_ADDRESS: Default OTA upgrade server protocol
-            buildConfigField "String", "DEFAULT_OTA_SERVER_PROTOCOL", "\"http\""
-            // DEFAULT_OTA_SERVER_ADDRESS: Default OTA upgrade server directory path to
-            // upgrade artifacts
-            buildConfigField "String", "DEFAULT_OTA_SERVER_SUB_DIRECTORY", "null"
-            // DEFAULT_OTA_SERVER_PORT: Port of the OTA upgrade server
-            buildConfigField "int", "DEFAULT_OTA_SERVER_PORT", "80"
-            // REQUIRED_BATTERY_LEVEL_TO_FIRMWARE_UPGRADE: Minimum battery level required to
-            // initiate firmware upgrade
-            buildConfigField "int", "REQUIRED_BATTERY_LEVEL_TO_FIRMWARE_UPGRADE", "50"
-            // DEFAULT_OTA_BUILD_PROP_FILE: Build property file to validate the upgrade
-            buildConfigField "String", "DEFAULT_OTA_BUILD_PROP_FILE", "\"build.prop\""
-            // DEFAULT_OTA_ZIP_FILE: Default suffix of the update package
-            buildConfigField "String", "DEFAULT_OTA_ZIP_FILE", "\".ota.zip\""
-            // UPDATE_PACKAGE_NAME: Default name of the OTA zip file
-            buildConfigField "String", "UPDATE_PACKAGE_NAME", "\"update.zip\""
-            // SILENT_FIRMWARE_INSTALLATION: Suppress all messages & confirmations during
-            // firmware upgrade
-            buildConfigField "boolean", "SILENT_FIRMWARE_INSTALLATION", "true"
-            buildConfigField "int", "FIRMWARE_UPGRADE_CONNECTIVITY_TIMEOUT", "10000"
-            buildConfigField "int", "FIRMWARE_UPGRADE_READ_TIMEOUT", "60000"
+            debuggable true
             signingConfig signingConfigs.config
+            versionNameSuffix getAppName()
+            copyReleaseApk(applicationVariants)
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMdd-HHmm')
+    return formattedDate
+}
+
+def copyReleaseApk(applicationVariants) {
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def releasePath = "${rootDir}/../targets"
+            output.outputFile = new File(releasePath, output.outputFile.name.replace("app", getAppFileName()))
+            println("APK new path " + output.outputFile)
         }
     }
 }
 
+def getAppName() {
+    def branch = (getWorkingBranch() == "release") ? "" : "-2.7"
+    return "-" + name + branch + "-b" + getDate()
+}
+
+def getAppFileName() {
+    def branch = (getWorkingBranch() == "release") ? "" : "-2.7"
+    return "mdm-system-service" + branch + "." + getPatchVersion() + "." + getSha1()
+}
+
+def getWorkingBranch() {
+    // Triple double-quotes for the breaklines
+    def workingBranch = """git --git-dir=${rootDir}/../.git
+                               --work-tree=${rootDir}/..
+                               rev-parse --abbrev-ref HEAD""".execute().text.trim()
+    print "Working branch: " + workingBranch + "\n"
+    return workingBranch
+}
+
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+}
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'commons-io:commons-io:2.4'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile(name:'DeveloperSDK-release', ext:'aar')
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+}
+
+def getSha1() {
+	def gitCommit = System.getenv("GIT_COMMIT")
+	if (gitCommit != null) {
+        if (gitCommit.length() > 8) {
+            return gitCommit.substring(0, 8)
+        } else {
+            return gitCommit
+        }
+		}
+} 
+
+def getPatchVersion() {
+	def Properties props = new Properties()
+    def propFile = new File("build.properties")
+    if (propFile.canRead()) {
+        props.load(new FileInputStream(propFile))
+    } else {
+        return System.getenv("BUILD_NUMBER")
+    }
+    int value = props["APP_VERSION"].toInteger()
+    return value
+        
 }
